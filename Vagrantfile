@@ -30,6 +30,6 @@ SHELL
      echo "export APP_DIR=/home/app_user/" >> /etc/profile.d/myvar.sh
 SHELL
     subconfig.vm.provision "shell", path: "provision_APP.sh"
-    subconfig.vm.provision "shell", run: "always", path: "evryboot.sh"    
+    subconfig.vm.provision "shell", run: "always", path: "everyboot.sh"    
 end
 end
