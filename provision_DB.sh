@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#  SET ENV
-export DB_USER=petclinic
-export DB_PASS=petclinic
-export DB_NAME=petclinic
-
 #  CREATE USER
 useradd  -m $DB_USER
 echo -e "$DB_PASS\n$DB_PASS\n" | sudo passwd $DB_USER
@@ -18,11 +13,17 @@ apt-get -y install mysql-server
 
 # =============== CHECK MYSQL =======================
 
-TSTMYSQL=`/etc/init.d/mysql status | grep stop`
-if [ "$TSTMYSQL" == "mysql stop/waiting" ]; then
-echo " =================== TRYING TO START MYSQL ======================"
-/etc/init.d/mysql start
+UP=`pgrep mysql | wc -l`
+if [ "$UP" -ne 1 ]
+then
+        echo " ======================== MySQL is down ============================"
+        sudo service mysql start  || exit
+        echo " ======================= MySQL is started =========================="
+
+else
+        echo " ======================= MySQL is STARTED =========================="
 fi
+
 
 # ============================ GIVE ACCESS ===========================
 mysql -u root  -proot232  -e "CREATE USER '$DB_USER' IDENTIFIED BY '$DB_PASS'"
