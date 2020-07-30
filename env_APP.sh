@@ -8,4 +8,5 @@ echo "export DB_PASS=petclinic" >> /etc/profile.d/myvar.sh
 echo "export PROJECT_DIR=/home/vagrant/spring-petclinic" >> /etc/profile.d/myvar.sh
 echo "export APP_USER=app_user" >> /etc/profile.d/myvar.sh
 echo "export APP_DIR=/home/app_user/" >> /etc/profile.d/myvar.sh
-
+echo "export PASS=root232" >> /etc/profile.d/myvar.sh
+echo "export URL=https://github.com/spring-projects/spring-petclinic.git" >> /etc/profile.d/myvar.sh
