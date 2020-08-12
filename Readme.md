@@ -1,1 +1,1 @@
-~~~~~~~~~~ Deploy spring-petclinic with Vagrant ~~~~~~~~~~
+ Deploy spring-petclinic with Vagrant 
