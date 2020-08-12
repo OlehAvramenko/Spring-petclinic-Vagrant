@@ -11,10 +11,10 @@ end
     subconfig.vm.hostname = "DB"
     subconfig.vm.network "private_network",  ip: "172.17.177.21"
 #   Set ENV
-    subconfig.vm.provision "shell", path: "env_DB.sh"
+    subconfig.vm.provision "shell", path: "scripts/env_DB.sh"
 #   Install mysql and etc.
-    subconfig.vm.provision "shell", path: "provision_DB.sh"
-    subconfig.vm.provision "shell", run: "always", path: "everyboot_DB.sh"
+    subconfig.vm.provision "shell", path: "scripts/provision_DB.sh"
+    subconfig.vm.provision "shell", run: "always", path: "scripts/everyboot_DB.sh"
     end
 
 #  ======= Configure APP VM =======
@@ -24,11 +24,11 @@ end
     subconfig.vm.network "private_network", ip: "172.17.177.22"
     subconfig.vm.network  "forwarded_port", guest: 8080, host: 9999
 #   Set ENV
-    subconfig.vm.provision "shell", path: "env_APP.sh"
+    subconfig.vm.provision "shell", path: "scripts/env_APP.sh"
 #   Build application
-    subconfig.vm.provision "shell", path: "provision_APP.sh"
+    subconfig.vm.provision "shell", path: "scripts/provision_APP.sh"
 #   Start application
-    subconfig.vm.provision "shell", run: "always", path: "everyboot_APP.sh"
+    subconfig.vm.provision "shell", run: "always", path: "scripts/everyboot_APP.sh"
 
 end
 end
