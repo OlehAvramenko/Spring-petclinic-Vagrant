@@ -41,4 +41,5 @@ sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mysql.conf.d/mysqld.cnf
 systemctl restart mysql
 
 # ============================ CHECK ACCESS ===========================
-mysql $DB_NAME -u $DB_USER -p$DB_PASS || echo "====================== COULD NOT GET ACCESS ========================"
+mysql $DB_NAME -u $DB_USER -p$DB_PASS && echo " ===================== ALL IS WORKING. $DB_USER GET ACCESS ========================= " || \ 
+echo " ====================== COULD NOT GET ACCESS ======================== " 
