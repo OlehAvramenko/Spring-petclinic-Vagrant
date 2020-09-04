@@ -9,7 +9,7 @@ end
 
   config.vm.define "DB_VM" do |subconfig|
     subconfig.vm.hostname = "DB"
-    subconfig.vm.network "private_network",  ip: "172.17.177.21"
+    subconfig.vm.network "private_network",  ip: "${IP_DB}"
 #   Set ENV
     subconfig.vm.provision "shell", path: "scripts/env_DB.sh"
 #   Install mysql and etc.
@@ -21,7 +21,7 @@ end
 
   config.vm.define "APP_VM" do |subconfig|
     subconfig.vm.hostname = "APP"
-    subconfig.vm.network "private_network", ip: "172.17.177.22"
+    subconfig.vm.network "private_network", ip: "${IP_APP}"
     subconfig.vm.network  "forwarded_port", guest: 8080, host: 9999
 #   Set ENV
     subconfig.vm.provision "shell", path: "scripts/env_APP.sh"
